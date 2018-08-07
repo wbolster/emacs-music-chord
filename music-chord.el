@@ -93,11 +93,11 @@
     (,(rx
        (1+ digit)
        (any "Xx×"))
-     . music-chord-repetition-face)
+     (0 music-chord-repetition-face t))
     (,(rx
        (any "Xx×")
        (1+ digit))
-     . music-chord-repetition-face))
+     (0 music-chord-repetition-face t)))
   "Font lock keywords for music-chord mode.")
 
 (setq music-chord-mode-syntax-table
