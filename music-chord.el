@@ -15,11 +15,23 @@
   :group 'text
   :prefix "music-chord-")
 
-(defface music-chord-chord-face
+(defface music-chord-face
   '((t :inherit font-lock-constant-face))
-  "Face for chords in music-chord."
+  "Face for base chords."
   :group 'music-chord)
-(defvar music-chord-chord-face 'music-chord-chord-face)
+(defvar music-chord-face 'music-chord-face)
+
+(defface music-chord-addition-face
+  '((t :inherit font-lock-variable-name-face))
+  "Face for chord additions."
+  :group 'music-chord)
+(defvar music-chord-addition-face 'music-chord-addition-face)
+
+(defface music-chord-bass-face
+  '((t :inherit font-lock-keyword-face))
+  "Face for custom bass notes."
+  :group 'music-chord)
+(defvar music-chord-bass-face 'music-chord-bass-face)
 
 (defface music-chord-header-face
   '((t :inherit font-lock-comment-face))
@@ -36,28 +48,37 @@
 (defconst music-chord--font-lock-keywords
   `((,(rx symbol-start
           ;; root note
-          (any "ABCDEFG") (? (any "b♭#♯"))
+          (group
+           (any "ABCDEFG") (? (any "b♭#♯")))
 
           ;; chord quality
-          (? (or "Maj" "M" "maj" "min" "m"))
-          (? (or "+" "aug" "0" "dim"))
+          (group
+           (? (or "Maj" "M" "maj" "min" "m"))
+           (? (or "+" "aug" "0" "dim")))
 
           ;; additions
-          (*
-           (? (any "(/"))
-           (? (or "add" "no" "M" "Maj" "maj"))
-           (? (any "b♭#♯+"))
-           (or "2" "3" "5" "6" "7" "9" "11" "13")
-           (? ")")
-           )
+          (group
+           (*
+            (? (any "(/"))
+            (? (or "add" "no" "M" "Maj" "maj"))
+            (? (any "b♭#♯+"))
+            (or "2" "3" "5" "6" "7" "9" "11" "13")
+            (? ")")))
 
           ;; suspended chord
-          (? (or "sus2" "sus4"))
+          (group
+           (? (or "sus2" "sus4")))
 
           ;; alternative bass note
-          (? "/" (any "ABCDEFG") (? (any "b♭#♯")))
+          (group
+           (? "/" (any "ABCDEFG") (? (any "b♭#♯"))))
+
           symbol-end)
-     . music-chord-chord-face)
+     (1 music-chord-face)
+     (2 music-chord-face)
+     (3 music-chord-addition-face)
+     (4 music-chord-addition-face)
+     (5 music-chord-bass-face))
 
     ;; header lines, e.g. [verse]
     (,(rx

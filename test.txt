@@ -12,6 +12,7 @@ https://en.wikipedia.org/wiki/Chord_names_and_symbols_(popular_music)
 
 Cdim7
 C6
+C7/Bb
 Cmin+9
 D+
 D0(add7)
