@@ -22,26 +22,26 @@
 (defvar music-chord-face 'music-chord-face)
 
 (defface music-chord-addition-face
-  '((t :inherit font-lock-variable-name-face))
+  '((t :inherit font-lock-keyword-face))
   "Face for chord additions."
   :group 'music-chord)
 (defvar music-chord-addition-face 'music-chord-addition-face)
 
 (defface music-chord-bass-face
-  '((t :inherit font-lock-keyword-face))
+  '((t :inherit font-lock-string-face))
   "Face for custom bass notes."
   :group 'music-chord)
 (defvar music-chord-bass-face 'music-chord-bass-face)
 
 (defface music-chord-header-face
   '((t :inherit font-lock-comment-face))
-  "Face for hearders in music-chord."
+  "Face for headers."
   :group 'music-chord)
 (defvar music-chord-header-face 'music-chord-header-face)
 
 (defface music-chord-repetition-face
   '((t :inherit font-lock-warning-face))
-  "Face for repetition marks in music-chord."
+  "Face for repetition marks."
   :group 'music-chord)
 (defvar music-chord-repetition-face 'music-chord-repetition-face)
 
