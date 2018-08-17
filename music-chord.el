@@ -47,6 +47,7 @@
 
 (defconst music-chord--font-lock-keywords
   `((,(rx symbol-start
+
           ;; root note
           (group
            (any "ABCDEFG") (? (any "b♭#♯")))
@@ -60,14 +61,10 @@
           (group
            (*
             (? (any "(/"))
-            (? (or "add" "no" "M" "Maj" "maj"))
+            (? (or "add" "no" "M" "Maj" "maj" "sus"))
             (? (any "b♭#♯+"))
-            (or "2" "3" "5" "6" "7" "9" "11" "13")
+            (or "2" "3" "4" "5" "6" "7" "9" "11" "13")
             (? ")")))
-
-          ;; suspended chord
-          (group
-           (? (or "sus2" "sus4")))
 
           ;; alternative bass note
           (group
@@ -77,8 +74,7 @@
      (1 music-chord-face)
      (2 music-chord-face)
      (3 music-chord-addition-face)
-     (4 music-chord-addition-face)
-     (5 music-chord-bass-face))
+     (4 music-chord-bass-face))
 
     ;; header lines, e.g. [verse]
     (,(rx
