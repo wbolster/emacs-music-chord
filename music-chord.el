@@ -1,4 +1,16 @@
-;;; music-chord --- major mode for text files containing musical chords
+;;; music-chord.el --- major mode for text files containing musical chords
+
+;; Copyright (C) 2018 Wouter Bolsterlee
+
+;; Author: Wouter Bolsterlee <wouter@bolsterl.ee>
+;; URL: https://github.com/wbolster/emacs-music-chord
+;; Package-Version: 0.1.0
+;; Keywords: lisp music songwriting
+;; Version: 0.1.0
+
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
 
 ;;; Commentary:
 
